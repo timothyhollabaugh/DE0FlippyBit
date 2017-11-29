@@ -35,3 +35,4 @@ This project will use the VGA output on the DE0 to a display. On the display, th
 Tim will be responsible for creating Verilog code for creating and manipulating matrix designs. This code will coincide with Tim’s research into creating a VGA display on a monitor for our project.
 Alex will be responsible for writing the Verilog code needed to create and manipulate state machines that determine the player’s progress within the game, such as losing the game or scoring a point. Helen and Tim will also assist with the Verilog as needed. 
 Helen will be responsible for the coding of our 8-bit seven-segment display and for creating a counting system for the player’s score using the DE0. Both will be displayed using the DE0’s seven-segment display systems.
+
