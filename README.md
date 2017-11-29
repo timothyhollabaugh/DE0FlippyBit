@@ -23,9 +23,6 @@ Tim will be responsible for writing Verilog code for creating and manipulating m
 Alex will be responsible for writing the Verilog code needed to create and manipulate state machines that determine the player’s progress within the game, such as losing the game or scoring a point. Helen and Tim will also assist with the Verilog as needed. 
 Helen will be responsible for the coding of our 8-bit seven-segment display and for creating a counting system for the player’s score using the DE0. 
 
-
-
-
 # VGA Flippy Bit
 
 ## Description:
