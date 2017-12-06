@@ -28,7 +28,7 @@ module Binary_BCD(binary, tens, ones);
             end
             // shift to the left one space
             tens = tens << 1;
-            tens[0] = one[3];
+            tens[0] = ones[3];
             ones = ones << 1;
             ones = binary[shift_remaining];
         end
