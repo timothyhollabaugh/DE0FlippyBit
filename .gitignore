@@ -1,2 +1,11 @@
 
 .DS_Store
+db/
+*.sdo
+*.vo
+simulation/
+incremental_db/
+output_files/
+*.bak
+*.qws
+*.qsf
