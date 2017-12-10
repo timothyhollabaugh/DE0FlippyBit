@@ -1,5 +1,6 @@
 
 // State Machine
+/*
 module Game_Logic(start, game_over, user_bits, letter_data, score, letter, x_pos, y_pos);
     input start;
     input game_over;
@@ -11,4 +12,4 @@ module Game_Logic(start, game_over, user_bits, letter_data, score, letter, x_pos
     output [5:0] y_pos;
 endmodule
 
-
+*/

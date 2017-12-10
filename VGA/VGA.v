@@ -1,4 +1,4 @@
-module VGA_Test(clk, data, red_out, green_out, blue_out, h_sync_out, v_sync_out, h_position, v_position, pixel_position, out);
+module VGA(clk, data, red_out, green_out, blue_out, h_sync_out, v_sync_out, h_position, v_position, pixel_position, out);
 
     input clk;
     input [1200:0] data;
