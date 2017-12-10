@@ -24,5 +24,6 @@ module Seven_Seg_Test(SW, LEDG, HEX0, HEX1, HEX2, HEX3);
     Seven_Seg hex2  (ones, ones_hex2);
     Seven_Seg hex3  (tens, tens_hex3);
     Binary_BCD one_hex2 (SW [7:0], ones, tens, hundreds);
+    // remember to change "SW [7:0]" to "score" once score is finalize. 
 
 endmodule 
