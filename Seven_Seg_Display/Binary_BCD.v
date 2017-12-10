@@ -1,36 +1,54 @@
 
 //  Converting the DE0's internal reading of score from binary to decimal.
+//  Code Reference link: http://www.johnloomis.org/ece314/notes/devices/binary_to_BCD/bin_to_bcd.html 
 
-module Binary_BCD(binary, tens, ones);
+module add_3(in, out);
+    input  [3:0] in;
+    output [3:0] out;
+    reg    [3:0] out;
+
+    always @ (in)
+        case (in)
+            4'b0000: out <= 4'b0000;
+            4'b0001: out <= 4'b0001;
+            4'b0010: out <= 4'b0010;
+            4'b0011: out <= 4'b0011;
+            4'b0100: out <= 4'b0100;
+            4'b0101: out <= 4'b1000;
+            4'b0110: out <= 4'b1001;
+            4'b0111: out <= 4'b1010;
+            4'b1000: out <= 4'b1011;
+            4'b1001: out <= 4'b1100;
+            default: out <= 4'b0000;
+        endcase
+endmodule
+
+module Binary_BCD(binary, ones, tens, hundreds);
     input [7:0] binary;
-    output reg [3:0] tens;
-    output reg [3:0] ones;
+    output [3:0] ones, tens;
+    output [1:0] hundreds;
 
-    // SR = Shifts Remaining 
-    integer shift_remaining; 
+    wire [3:0] c1, c2, c3, c4, c5, c6, c7;
+    wire [3:0] d1, d2, d3, d4, d5, d6, d7;
 
-    always @ (binary) begin
-        // sets 10's and 1's to 0.
-        tens = 4'd0;
-        ones  = 4'd0;
+    assign d1 = { 1'b0, binary[7:5] };
+    assign d2 = { c1[2:0], binary[4] };
+    assign d3 = { c2[2:0], binary[3] };
+    assign d4 = { c3[2:0], binary[2] };
+    assign d5 = { c4[2:0], binary[1] };
+    assign d6 = { 1'b0, c1[3], c2[3], c3[3] };
+    assign d7 = { c6[2:0], c4[3] };
 
-        for (
-                shift_remaining = 7; 
-                shift_remaining >= 0; 
-                shift_remaining = shift_remaining - 1
-            ) begin
-            // add 3 to columns >= 5
-            if (tens >= 5) begin
-                tens = tens + 3;
-            end
-            if (ones >= 5) begin
-                ones = ones + 3;
-            end
-            // shift to the left one space
-            tens = tens << 1;
-            tens[0] = ones[3];
-            ones = ones << 1;
-            ones = binary[shift_remaining];
-        end
-    end
+    add_3 m1(d1, c1);
+    add_3 m2(d2, c2);
+    add_3 m3(d3, c3);
+    add_3 m4(d4, c4);
+    add_3 m5(d5, c5);
+    add_3 m6(d6, c6);
+    add_3 m7(d7, c7);
+
+    assign ones     = { c5[2:0], binary[0] };
+    assign tens     = { c7[2:0], c5[3] };
+    assign hundreds = { c6[3] , c7[3] };
+
 endmodule
