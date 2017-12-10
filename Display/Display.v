@@ -1,13 +1,16 @@
-module Display(letter, clock, xpos, ypos, framebuffer);
-	input [7:0]letter;
+module Display(clock, xpos, ypos, framebuffer);
+	//input [7:0]letter;
 	input clock, xpos, ypos;
 	output [1199:0]framebuffer;
 	
 	/* 
 	VGA is 40 pixels wide by 30 pixels high
 	*/
-	
-	wire [14:0]letter1, letter2; //letter 1 is the left letter; letter 2 is right
+    
+	wire [7:0]letter;
+    assign letter[7:0] = 8'b01101100; // 6 C
+    
+	reg [14:0]letter1, letter2; //letter 1 is the left letter; letter 2 is right
 	wire [29:0]displayed_value;
 	
 	always @(letter[7:4]) begin 
@@ -55,17 +58,17 @@ module Display(letter, clock, xpos, ypos, framebuffer);
 	assign displayed_value[29:15] = letter1;
 	assign displayed_value[14:0] = letter2;
 	
-	assign framebuffer[58:56] = displayed_value[29:27];
-	assign framebuffer[98:96] = displayed_value[26:24];
-	assign framebuffer[138:136] = displayed_value[23:21];
-	assign framebuffer[178:176] = displayed_value[20:18];
-	assign framebuffer[218:216] = displayed_value[17:15];
+	assign framebuffer[98:96] = displayed_value[29:27];
+	assign framebuffer[138:136] = displayed_value[26:24];
+	assign framebuffer[178:176] = displayed_value[23:21];
+	assign framebuffer[218:216] = displayed_value[20:18];
+	assign framebuffer[258:256] = displayed_value[17:15];
 	
-	assign framebuffer[63:61] = displayed_value[14:12];
-	assign framebuffer[103:101] = displayed_value[11:9];
-	assign framebuffer[143:141] = displayed_value[8:6];
-	assign framebuffer[183:181] = displayed_value[5:3];
-	assign framebuffer[223:221] = displayed_value[2:0];
+	assign framebuffer[103:101] = displayed_value[14:12];
+	assign framebuffer[143:141] = displayed_value[11:9];
+	assign framebuffer[183:181] = displayed_value[8:6];
+	assign framebuffer[223:221] = displayed_value[5:3];
+	assign framebuffer[263:261] = displayed_value[2:0];
 	
 endmodule
 	
