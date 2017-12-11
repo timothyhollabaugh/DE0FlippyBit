@@ -3,14 +3,6 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
     input [7:0]letter1, letter2, letter3;
     input [4:0]ypos1, ypos2, ypos3;
     output reg[1199:0] framebuffer;
-    
-    reg [4:0]downward_spiral_1, downward_spiral_2, downward_spiral_3;
-
-    always @(*) begin
-        downward_spiral_1 <= ypos1;
-        downward_spiral_2 <= ypos2;
-        downward_spiral_3 <= ypos3;
-    end
 
     wire [29:0]displayed_value1, displayed_value2, displayed_value3;
 
@@ -32,45 +24,133 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
 
     //letter1
     always @(*) begin 
-        framebuffer[88+downward_spiral_1*40:86+downward_spiral_1*40] = displayed_value1[29:27];
-        framebuffer[128+downward_spiral_1*40:126+downward_spiral_1*40] = displayed_value1[26:24];
-        framebuffer[168+downward_spiral_1*40:166+downward_spiral_1*40] = displayed_value1[23:21];
-        framebuffer[208+downward_spiral_1*40:206+downward_spiral_1*40] = displayed_value1[20:18];
-        framebuffer[248+downward_spiral_1*40:246+downward_spiral_1*40] = displayed_value1[17:15];
+        framebuffer[88+ypos1*40] = displayed_value1[29];
+        framebuffer[87+ypos1*40] = displayed_value1[28];
+        framebuffer[86+ypos1*40] = displayed_value1[27];
+        
+        framebuffer[128+ypos1*40] = displayed_value1[26];
+        framebuffer[127+ypos1*40] = displayed_value1[25];
+        framebuffer[126+ypos1*40] = displayed_value1[24];
+        
+        framebuffer[168+ypos1*40] = displayed_value1[23];
+        framebuffer[167+ypos1*40] = displayed_value1[22];
+        framebuffer[166+ypos1*40] = displayed_value1[21];
+        
+        framebuffer[208+ypos1*40] = displayed_value1[20];
+        framebuffer[207+ypos1*40] = displayed_value1[19];
+        framebuffer[206+ypos1*40] = displayed_value1[18];
+        
+        framebuffer[248+ypos1*40] = displayed_value1[17];
+        framebuffer[247+ypos1*40] = displayed_value1[16];
+        framebuffer[246+ypos1*40] = displayed_value1[15];
+        
+ 
+        framebuffer[93+ypos1*40] = displayed_value1[14];
+        framebuffer[92+ypos1*40] = displayed_value1[13];
+        framebuffer[91+ypos1*40] = displayed_value1[12];
+        
+        framebuffer[133+ypos1*40] = displayed_value1[11];
+        framebuffer[132+ypos1*40] = displayed_value1[10];
+        framebuffer[131+ypos1*40] = displayed_value1[9];
+        
+        framebuffer[173+ypos1*40] = displayed_value1[8];
+        framebuffer[172+ypos1*40] = displayed_value1[7];
+        framebuffer[171+ypos1*40] = displayed_value1[6];
+        
+        framebuffer[213+ypos1*40] = displayed_value1[5];
+        framebuffer[212+ypos1*40] = displayed_value1[4];
+        framebuffer[211+ypos1*40] = displayed_value1[3];
+        
+        framebuffer[253+ypos1*40] = displayed_value1[2];
+        framebuffer[252+ypos1*40] = displayed_value1[1];
+        framebuffer[251+ypos1*40] = displayed_value1[0];
 
-        framebuffer[93+downward_spiral_1*40:91+downward_spiral_1*40] = displayed_value1[14:12];
-        framebuffer[133+downward_spiral_1*40:131+downward_spiral_1*40] = displayed_value1[11:9];
-        framebuffer[173+downward_spiral_1*40:171+downward_spiral_1*40] = displayed_value1[8:6];
-        framebuffer[213+downward_spiral_1*40:211+downward_spiral_1*40] = displayed_value1[5:3];
-        framebuffer[253+downward_spiral_1*40:251+downward_spiral_1*40] = displayed_value1[2:0];
+        //letter2
+ 
+        framebuffer[98+ypos1*40] = displayed_value2[29];
+        framebuffer[97+ypos1*40] = displayed_value2[28];
+        framebuffer[96+ypos1*40] = displayed_value2[27];
+        
+        framebuffer[138+ypos1*40] = displayed_value2[26];
+        framebuffer[137+ypos1*40] = displayed_value2[25];
+        framebuffer[136+ypos1*40] = displayed_value2[24];
+        
+        framebuffer[178+ypos1*40] = displayed_value2[23];
+        framebuffer[177+ypos1*40] = displayed_value2[22];
+        framebuffer[176+ypos1*40] = displayed_value2[21];
+        
+        framebuffer[218+ypos1*40] = displayed_value2[20];
+        framebuffer[217+ypos1*40] = displayed_value2[19];
+        framebuffer[216+ypos1*40] = displayed_value2[18];
+        
+        framebuffer[258+ypos1*40] = displayed_value2[17];
+        framebuffer[257+ypos1*40] = displayed_value2[16];
+        framebuffer[256+ypos1*40] = displayed_value2[15];
+        
+ 
+        framebuffer[103+ypos1*40] = displayed_value2[14];
+        framebuffer[102+ypos1*40] = displayed_value2[13];
+        framebuffer[101+ypos1*40] = displayed_value2[12];
+        
+        framebuffer[143+ypos1*40] = displayed_value2[11];
+        framebuffer[142+ypos1*40] = displayed_value2[10];
+        framebuffer[141+ypos1*40] = displayed_value2[9];
+        
+        framebuffer[183+ypos1*40] = displayed_value2[8];
+        framebuffer[182+ypos1*40] = displayed_value2[7];
+        framebuffer[181+ypos1*40] = displayed_value2[6];
+        
+        framebuffer[223+ypos1*40] = displayed_value2[5];
+        framebuffer[222+ypos1*40] = displayed_value2[4];
+        framebuffer[221+ypos1*40] = displayed_value2[3];
+        
+        framebuffer[263+ypos1*40] = displayed_value2[2];
+        framebuffer[262+ypos1*40] = displayed_value2[1];
+        framebuffer[261+ypos1*40] = displayed_value2[0];
+    
+        //letter3
+
+        framebuffer[108+ypos1*40] = displayed_value3[29];
+        framebuffer[107+ypos1*40] = displayed_value3[28];
+        framebuffer[106+ypos1*40] = displayed_value3[27];
+        
+        framebuffer[148+ypos1*40] = displayed_value3[26];
+        framebuffer[147+ypos1*40] = displayed_value3[25];
+        framebuffer[146+ypos1*40] = displayed_value3[24];
+        
+        framebuffer[188+ypos1*40] = displayed_value3[23];
+        framebuffer[187+ypos1*40] = displayed_value3[22];
+        framebuffer[186+ypos1*40] = displayed_value3[21];
+        
+        framebuffer[228+ypos1*40] = displayed_value3[20];
+        framebuffer[227+ypos1*40] = displayed_value3[19];
+        framebuffer[226+ypos1*40] = displayed_value3[18];
+        
+        framebuffer[268+ypos1*40] = displayed_value3[17];
+        framebuffer[267+ypos1*40] = displayed_value3[16];
+        framebuffer[266+ypos1*40] = displayed_value3[15];
+        
+ 
+        framebuffer[113+ypos1*40] = displayed_value3[14];
+        framebuffer[112+ypos1*40] = displayed_value3[13];
+        framebuffer[111+ypos1*40] = displayed_value3[12];
+        
+        framebuffer[153+ypos1*40] = displayed_value3[11];
+        framebuffer[152+ypos1*40] = displayed_value3[10];
+        framebuffer[151+ypos1*40] = displayed_value3[9];
+        
+        framebuffer[193+ypos1*40] = displayed_value3[8];
+        framebuffer[192+ypos1*40] = displayed_value3[7];
+        framebuffer[191+ypos1*40] = displayed_value3[6];
+        
+        framebuffer[233+ypos1*40] = displayed_value3[5];
+        framebuffer[232+ypos1*40] = displayed_value3[4];
+        framebuffer[231+ypos1*40] = displayed_value3[3];
+        
+        framebuffer[273+ypos1*40] = displayed_value3[2];
+        framebuffer[272+ypos1*40] = displayed_value3[1];
+        framebuffer[271+ypos1*40] = displayed_value3[0];
     end
-    
-    //letter2
-    assign framebuffer[98+ypos2*40:96+ypos2*40] = displayed_value2[29:27];
-    assign framebuffer[138+ypos2*40:136+ypos2*40] = displayed_value2[26:24];
-    assign framebuffer[178+ypos2*40:176+ypos2*40] = displayed_value2[23:21];
-    assign framebuffer[218+ypos2*40:216+ypos2*40] = displayed_value2[20:18];
-    assign framebuffer[258+ypos2*40:256+ypos2*40] = displayed_value2[17:15];
-
-    assign framebuffer[103+ypos2*40:101+ypos2*40] = displayed_value2[14:12];
-    assign framebuffer[143+ypos2*40:141+ypos2*40] = displayed_value2[11:9];
-    assign framebuffer[183+ypos2*40:181+ypos2*40] = displayed_value2[8:6];
-    assign framebuffer[223+ypos2*40:221+ypos2*40] = displayed_value2[5:3];
-    assign framebuffer[263+ypos2*40:261+ypos2*40] = displayed_value2[2:0];
-    
-    //letter3
-    assign framebuffer[108+ypos3*40:106+ypos3*40] = displayed_value3[29:27];
-    assign framebuffer[148+ypos3*40:146+ypos3*40] = displayed_value3[26:24];
-    assign framebuffer[188+ypos3*40:186+ypos3*40] = displayed_value3[23:21];
-    assign framebuffer[228+ypos3*40:226+ypos3*40] = displayed_value3[20:18];
-    assign framebuffer[268+ypos3*40:266+ypos3*40] = displayed_value3[17:15];
-
-    assign framebuffer[113+ypos3*40:111+ypos3*40] = displayed_value3[14:12];
-    assign framebuffer[153+ypos3*40:151+ypos3*40] = displayed_value3[11:9];
-    assign framebuffer[193+ypos3*40:191+ypos3*40] = displayed_value3[8:6];
-    assign framebuffer[233+ypos3*40:231+ypos3*40] = displayed_value3[5:3];
-    assign framebuffer[273+ypos3*40:271+ypos3*40] = displayed_value3[2:0];
-    
     
 endmodule
 
