@@ -67,89 +67,89 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
 
         //letter2
  
-        framebuffer[98+ypos1*40] = displayed_value2[29];
-        framebuffer[97+ypos1*40] = displayed_value2[28];
-        framebuffer[96+ypos1*40] = displayed_value2[27];
+        framebuffer[98+ypos2*40] = displayed_value2[29];
+        framebuffer[97+ypos2*40] = displayed_value2[28];
+        framebuffer[96+ypos2*40] = displayed_value2[27];
         
-        framebuffer[138+ypos1*40] = displayed_value2[26];
-        framebuffer[137+ypos1*40] = displayed_value2[25];
-        framebuffer[136+ypos1*40] = displayed_value2[24];
+        framebuffer[138+ypos2*40] = displayed_value2[26];
+        framebuffer[137+ypos2*40] = displayed_value2[25];
+        framebuffer[136+ypos2*40] = displayed_value2[24];
         
-        framebuffer[178+ypos1*40] = displayed_value2[23];
-        framebuffer[177+ypos1*40] = displayed_value2[22];
-        framebuffer[176+ypos1*40] = displayed_value2[21];
+        framebuffer[178+ypos2*40] = displayed_value2[23];
+        framebuffer[177+ypos2*40] = displayed_value2[22];
+        framebuffer[176+ypos2*40] = displayed_value2[21];
         
-        framebuffer[218+ypos1*40] = displayed_value2[20];
-        framebuffer[217+ypos1*40] = displayed_value2[19];
-        framebuffer[216+ypos1*40] = displayed_value2[18];
+        framebuffer[218+ypos2*40] = displayed_value2[20];
+        framebuffer[217+ypos2*40] = displayed_value2[19];
+        framebuffer[216+ypos2*40] = displayed_value2[18];
         
-        framebuffer[258+ypos1*40] = displayed_value2[17];
-        framebuffer[257+ypos1*40] = displayed_value2[16];
-        framebuffer[256+ypos1*40] = displayed_value2[15];
+        framebuffer[258+ypos2*40] = displayed_value2[17];
+        framebuffer[257+ypos2*40] = displayed_value2[16];
+        framebuffer[256+ypos2*40] = displayed_value2[15];
         
  
-        framebuffer[103+ypos1*40] = displayed_value2[14];
-        framebuffer[102+ypos1*40] = displayed_value2[13];
-        framebuffer[101+ypos1*40] = displayed_value2[12];
+        framebuffer[103+ypos2*40] = displayed_value2[14];
+        framebuffer[102+ypos2*40] = displayed_value2[13];
+        framebuffer[101+ypos2*40] = displayed_value2[12];
         
-        framebuffer[143+ypos1*40] = displayed_value2[11];
-        framebuffer[142+ypos1*40] = displayed_value2[10];
-        framebuffer[141+ypos1*40] = displayed_value2[9];
+        framebuffer[143+ypos2*40] = displayed_value2[11];
+        framebuffer[142+ypos2*40] = displayed_value2[10];
+        framebuffer[141+ypos2*40] = displayed_value2[9];
         
-        framebuffer[183+ypos1*40] = displayed_value2[8];
-        framebuffer[182+ypos1*40] = displayed_value2[7];
-        framebuffer[181+ypos1*40] = displayed_value2[6];
+        framebuffer[183+ypos2*40] = displayed_value2[8];
+        framebuffer[182+ypos2*40] = displayed_value2[7];
+        framebuffer[181+ypos2*40] = displayed_value2[6];
         
-        framebuffer[223+ypos1*40] = displayed_value2[5];
-        framebuffer[222+ypos1*40] = displayed_value2[4];
-        framebuffer[221+ypos1*40] = displayed_value2[3];
+        framebuffer[223+ypos2*40] = displayed_value2[5];
+        framebuffer[222+ypos2*40] = displayed_value2[4];
+        framebuffer[221+ypos2*40] = displayed_value2[3];
         
-        framebuffer[263+ypos1*40] = displayed_value2[2];
-        framebuffer[262+ypos1*40] = displayed_value2[1];
-        framebuffer[261+ypos1*40] = displayed_value2[0];
+        framebuffer[263+ypos2*40] = displayed_value2[2];
+        framebuffer[262+ypos2*40] = displayed_value2[1];
+        framebuffer[261+ypos2*40] = displayed_value2[0];
     
         //letter3
 
-        framebuffer[108+ypos1*40] = displayed_value3[29];
-        framebuffer[107+ypos1*40] = displayed_value3[28];
-        framebuffer[106+ypos1*40] = displayed_value3[27];
+        framebuffer[108+ypos3*40] = displayed_value3[29];
+        framebuffer[107+ypos3*40] = displayed_value3[28];
+        framebuffer[106+ypos3*40] = displayed_value3[27];
         
-        framebuffer[148+ypos1*40] = displayed_value3[26];
-        framebuffer[147+ypos1*40] = displayed_value3[25];
-        framebuffer[146+ypos1*40] = displayed_value3[24];
+        framebuffer[148+ypos3*40] = displayed_value3[26];
+        framebuffer[147+ypos3*40] = displayed_value3[25];
+        framebuffer[146+ypos3*40] = displayed_value3[24];
         
-        framebuffer[188+ypos1*40] = displayed_value3[23];
-        framebuffer[187+ypos1*40] = displayed_value3[22];
-        framebuffer[186+ypos1*40] = displayed_value3[21];
+        framebuffer[188+ypos3*40] = displayed_value3[23];
+        framebuffer[187+ypos3*40] = displayed_value3[22];
+        framebuffer[186+ypos3*40] = displayed_value3[21];
         
-        framebuffer[228+ypos1*40] = displayed_value3[20];
-        framebuffer[227+ypos1*40] = displayed_value3[19];
-        framebuffer[226+ypos1*40] = displayed_value3[18];
+        framebuffer[228+ypos3*40] = displayed_value3[20];
+        framebuffer[227+ypos3*40] = displayed_value3[19];
+        framebuffer[226+ypos3*40] = displayed_value3[18];
         
-        framebuffer[268+ypos1*40] = displayed_value3[17];
-        framebuffer[267+ypos1*40] = displayed_value3[16];
-        framebuffer[266+ypos1*40] = displayed_value3[15];
+        framebuffer[268+ypos3*40] = displayed_value3[17];
+        framebuffer[267+ypos3*40] = displayed_value3[16];
+        framebuffer[266+ypos3*40] = displayed_value3[15];
         
  
-        framebuffer[113+ypos1*40] = displayed_value3[14];
-        framebuffer[112+ypos1*40] = displayed_value3[13];
-        framebuffer[111+ypos1*40] = displayed_value3[12];
+        framebuffer[113+ypos3*40] = displayed_value3[14];
+        framebuffer[112+ypos3*40] = displayed_value3[13];
+        framebuffer[111+ypos3*40] = displayed_value3[12];
         
-        framebuffer[153+ypos1*40] = displayed_value3[11];
-        framebuffer[152+ypos1*40] = displayed_value3[10];
-        framebuffer[151+ypos1*40] = displayed_value3[9];
+        framebuffer[153+ypos3*40] = displayed_value3[11];
+        framebuffer[152+ypos3*40] = displayed_value3[10];
+        framebuffer[151+ypos3*40] = displayed_value3[9];
         
-        framebuffer[193+ypos1*40] = displayed_value3[8];
-        framebuffer[192+ypos1*40] = displayed_value3[7];
-        framebuffer[191+ypos1*40] = displayed_value3[6];
+        framebuffer[193+ypos3*40] = displayed_value3[8];
+        framebuffer[192+ypos3*40] = displayed_value3[7];
+        framebuffer[191+ypos3*40] = displayed_value3[6];
         
-        framebuffer[233+ypos1*40] = displayed_value3[5];
-        framebuffer[232+ypos1*40] = displayed_value3[4];
-        framebuffer[231+ypos1*40] = displayed_value3[3];
+        framebuffer[233+ypos3*40] = displayed_value3[5];
+        framebuffer[232+ypos3*40] = displayed_value3[4];
+        framebuffer[231+ypos3*40] = displayed_value3[3];
         
-        framebuffer[273+ypos1*40] = displayed_value3[2];
-        framebuffer[272+ypos1*40] = displayed_value3[1];
-        framebuffer[271+ypos1*40] = displayed_value3[0];
+        framebuffer[273+ypos3*40] = displayed_value3[2];
+        framebuffer[272+ypos3*40] = displayed_value3[1];
+        framebuffer[271+ypos3*40] = displayed_value3[0];
     end
     
 endmodule
