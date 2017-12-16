@@ -2,7 +2,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
     input clock;
     input [7:0]letter1, letter2, letter3;
     input [4:0]ypos1, ypos2, ypos3;
-    output reg[1199:0] framebuffer;
+    output reg [1199:0] framebuffer;
 
     wire [29:0]displayed_value1, displayed_value2, displayed_value3;
 
