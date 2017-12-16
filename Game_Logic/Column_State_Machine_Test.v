@@ -11,6 +11,8 @@ module Column_State_Machine_Test(CLOCK_50, SW, LEDG, BUTTON, VGA_R, VGA_G, VGA_H
     wire [4:0] ypos_wire;
     wire [7:0] letter_wire;
 
+    assign LEDG[5:1] = ypos_wire;
+
     Column_State_Machine columntwo(
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
