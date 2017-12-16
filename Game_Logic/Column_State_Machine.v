@@ -1,7 +1,7 @@
 
 // Going down state machine
 
-module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, correct, letter);
+module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, correct, letter, present_state);
 
     input reset_signal, clock;
     input [7:0] user_input;
@@ -16,13 +16,13 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
          MovingDownState = 3'b100,
         BoardBottomState = 3'b101;
 
-    reg [2:0]  present_state;
+    output reg [2:0]  present_state;
     reg [2:0]  next_state;
     reg [25:0] time_delay;
     reg [7:0]  randomletter;
 
     // Calculate nest state
-    always @ (present_state or reset_signal or user_input) begin
+    always @ (present_state or reset_signal or user_input or ypos or time_delay or letter) begin
         case (present_state)
             StartState: begin
                 next_state <= reset_signal ? StartState : ResetState;
@@ -39,7 +39,7 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
                 if (reset_signal) begin
                     next_state <= StartState;
                 end
-                else if (user_input == correct) begin
+                else if (user_input == letter) begin
                     next_state <= CorrectState;
                 end
                 else if (time_delay >= 26'd50000000) begin
@@ -71,7 +71,7 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
             BoardBottomState: begin
                 next_state <= StartState;
             end
-        default: next_state <= StartState;
+        default: next_state <= BoardBottomState;
         endcase
     end
 
@@ -88,7 +88,7 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
     always @ (present_state) begin
         case (present_state)
             StartState      : begin
-                ypos      <= 5'd22;
+                ypos      <= 5'd20;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;
@@ -112,7 +112,7 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
                 letter    <= letter;
             end
             MovingDownState : begin
-                ypos      <= ypos + 5'd1;
+                ypos      <= ypos;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;
@@ -124,7 +124,7 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
                 letter    <= letter;
             end
             default: begin
-                ypos      <= 5'd22;
+                ypos      <= 5'd0;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;

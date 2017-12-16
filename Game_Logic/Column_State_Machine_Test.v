@@ -20,7 +20,8 @@ module Column_State_Machine_Test(CLOCK_50, SW, LEDG, BUTTON, VGA_R, VGA_G, VGA_H
         .ypos(ypos_wire),
         .game_over(LEDG[9]),
         .correct(LEDG[0]),
-        .letter(letter_wire)
+        .letter(letter_wire),
+        .present_state(LEDG[8:6]),
 
     );
 
@@ -29,9 +30,9 @@ module Column_State_Machine_Test(CLOCK_50, SW, LEDG, BUTTON, VGA_R, VGA_G, VGA_H
         .letter1(SW[7:0]),
         .letter2(letter_wire),
         .letter3(SW[7:0] + 8'd2),
-        .ypos1(0),
+        .ypos1(10),
         .ypos2(ypos_wire),
-        .ypos3(21),
+        .ypos3(22),
         .framebuffer(framebuffer)
     );
 
