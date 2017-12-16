@@ -96,7 +96,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[213+ypos1*40] <= displayed_value1[5];
             framebuffer[212+ypos1*40] <= displayed_value1[4];
-            framebuffer[211+ypos1*40] <= displayed_value1[3];
+            framebuffer[211+ypos1*40] <= displayed_value1[8];
             
             framebuffer[253+ypos1*40] <= displayed_value1[2];
             framebuffer[252+ypos1*40] <= displayed_value1[1];
@@ -169,7 +169,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[223+ypos2*40] <= displayed_value2[5];
             framebuffer[222+ypos2*40] <= displayed_value2[4];
-            framebuffer[221+ypos2*40] <= displayed_value2[3];
+            framebuffer[221+ypos2*40] <= displayed_value2[8];
             
             framebuffer[263+ypos2*40] <= displayed_value2[2];
             framebuffer[262+ypos2*40] <= displayed_value2[1];
@@ -177,17 +177,33 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
         end
             
         if(ypos3 >= 5'd22) begin // letter3
-            framebuffer[108:106] <= 3'd0;
-            framebuffer[148:146] <= 3'd0;
-            framebuffer[188:186] <= 3'd0;
-            framebuffer[228:226] <= 3'd0;
-            framebuffer[268:266] <= 3'd0;
-            
-            framebuffer[113:111] <= 3'd0;
-            framebuffer[153:151] <= 3'd0;
-            framebuffer[193:191] <= 3'd0;
-            framebuffer[233:231] <= 3'd0;
-            framebuffer[273:271] <= 3'd0;
+            framebuffer[113:106] <= 8'd0;
+            framebuffer[153:146] <= 8'd0;
+            framebuffer[193:186] <= 8'd0;
+            framebuffer[233:226] <= 8'd0;
+            framebuffer[273:266] <= 8'd0;
+            framebuffer[313:306] <= 8'd0;
+            framebuffer[353:346] <= 8'd0;
+            framebuffer[393:386] <= 8'd0;
+            framebuffer[433:426] <= 8'd0;
+            framebuffer[473:466] <= 8'd0;
+            framebuffer[513:506] <= 8'd0;
+            framebuffer[553:546] <= 8'd0;
+            framebuffer[593:586] <= 8'd0;
+            framebuffer[633:626] <= 8'd0;
+            framebuffer[673:666] <= 8'd0;
+            framebuffer[713:706] <= 8'd0;
+            framebuffer[753:746] <= 8'd0;
+            framebuffer[793:786] <= 8'd0;
+            framebuffer[833:826] <= 8'd0;
+            framebuffer[873:866] <= 8'd0;
+            framebuffer[913:906] <= 8'd0;
+            framebuffer[953:946] <= 8'd0;
+            framebuffer[993:986] <= 8'd0;
+            framebuffer[1033:1026] <= 8'd0;
+            framebuffer[1073:1066] <= 8'd0;
+            framebuffer[1113:1106] <= 8'd0;
+            framebuffer[1153:1146] <= 8'd0;
             
         end else begin
             //letter3
@@ -227,7 +243,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[233+ypos3*40] <= displayed_value3[5];
             framebuffer[232+ypos3*40] <= displayed_value3[4];
-            framebuffer[231+ypos3*40] <= displayed_value3[3];
+            framebuffer[231+ypos3*40] <= displayed_value3[8];
             
             framebuffer[273+ypos3*40] <= displayed_value3[2];
             framebuffer[272+ypos3*40] <= displayed_value3[1];
