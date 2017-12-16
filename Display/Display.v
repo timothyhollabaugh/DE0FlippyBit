@@ -30,8 +30,49 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
     assign displayed_value3[29:15] = letter3_left;
     assign displayed_value3[14:0] = letter3_right;
 
-    //letter1
     always @(*) begin 
+        if(ypos1 >= 5'd22) //letter 1
+            framebuffer[88:86] <= 0;
+            framebuffer[128:126] <= 0;
+            framebuffer[168:166] <= 0;
+            framebuffer[208:206] <= 0;
+            framebuffer[248:246] <= 0;
+            
+            framebuffer[93:91] <= 0;
+            framebuffer[133:131] <= 0;
+            framebuffer[173:171] <= 0;
+            framebuffer[213:211] <= 0;
+            framebuffer[253:251] <= 0;
+        
+        if(ypos2 >= 5'd22) //letter 2
+            framebuffer[98:96] <= 0;
+            framebuffer[138:136] <= 0;
+            framebuffer[178:176] <= 0;
+            framebuffer[218:216] <= 0;
+            framebuffer[258:256] <= 0;
+            
+            framebuffer[103:101] <= 0;
+            framebuffer[143:141] <= 0;
+            framebuffer[183:181] <= 0;
+            framebuffer[223:221] <= 0;
+            framebuffer[263:261] <= 0;
+            
+        if(ypos3 >= 5'd22) // letter3
+            framebuffer[108:106] <= 0;
+            framebuffer[148:146] <= 0;
+            framebuffer[188:186] <= 0;
+            framebuffer[228:226] <= 0;
+            framebuffer[268:266] <= 0;
+            
+            framebuffer[113:111] <= 0;
+            framebuffer[153:151] <= 0;
+            framebuffer[193:191] <= 0;
+            framebuffer[233:231] <= 0;
+            framebuffer[273:271] <= 0;
+            
+        else
+            
+        //letter 1
         framebuffer[88+ypos1*40] <= displayed_value1[29];
         framebuffer[87+ypos1*40] <= displayed_value1[28];
         framebuffer[86+ypos1*40] <= displayed_value1[27];
@@ -159,6 +200,6 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
         framebuffer[272+ypos3*40] <= displayed_value3[1];
         framebuffer[271+ypos3*40] <= displayed_value3[0];
     end
-    
+           
 endmodule
 
