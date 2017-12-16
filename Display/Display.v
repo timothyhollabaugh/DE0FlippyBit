@@ -1,10 +1,11 @@
 module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
     input clock;
-    input [7:0]letter1, letter2, letter3;
-    input [4:0]ypos1, ypos2, ypos3;
+    input [7:0] letter1, letter2, letter3;
+    input [4:0] ypos1, ypos2, ypos3;
     output reg [1199:0] framebuffer;
 
-    wire [29:0]displayed_value1, displayed_value2, displayed_value3;
+    wire [14:0] letter_left1, letter_right1, letter_left2, letter_right2, letter_left3, letter_right3;
+    wire [29:0] displayed_value1, displayed_value2, displayed_value3;
 
     letter_stuff u1 (letter1, letter1_left, letter1_right);
     letter_stuff u2 (letter2, letter2_left, letter2_right);
