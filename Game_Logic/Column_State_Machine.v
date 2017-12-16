@@ -5,9 +5,9 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
 
     input reset_signal, clock;
     input [7:0] user_input;
-    output game_over, correct;
-    output [4:0] ypos;
-    output [7:0] letter;
+    output reg game_over, correct;
+    output reg [4:0] ypos;
+    output reg [7:0] letter;
 
     parameter StartState = 3'b000,
               ResetState = 3'b001,

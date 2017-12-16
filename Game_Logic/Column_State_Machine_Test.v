@@ -8,10 +8,10 @@ module Column_State_Machine_Test(CLOCK_50, SW, LEDG, BUTTON, VGA_R, VGA_G, VGA_H
     output VGA_HS, VGA_VS;
 
     wire [1199:0] framebuffer;
-    wire ypos_wire;
-    wire letter_wire;
+    wire [4:0] ypos_wire;
+    wire [7:0] letter_wire;
 
-    Column_State_Machine_Test columntwo(
+    Column_State_Machine columntwo(
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
         .reset_signal(~BUTTON[0]),
