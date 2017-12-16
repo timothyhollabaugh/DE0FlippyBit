@@ -1,7 +1,7 @@
 
 // State Machine
 
-module Game_Logic(clock, present_state, start_button, user_bits, score, y_pos1, y_pos2, y_pos3,letter1, letter2, letter3);
+module Game_Logic(clock, present_state, start_button, user_bits, score, y_pos1, y_pos2, y_pos3,letter1, letter2, letter3a);
 
     input start_button;
     input user_bits;
