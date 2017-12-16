@@ -29,7 +29,9 @@ module Flippy_Bit (CLOCK_50, SW, BUTTON, HEX0, HEX1, HEX2, HEX3, HEX2_DP);
     
     Big_State_Machine u (reset_button, game_over, correct, reset_signal, score, clock_some_hertz);
     
-    //insert CLM here
+    Column_State_Machine u (reset_signal, game_over, correct, letter1, ypos1); // Change as needed
+    Column_State_Machine u (reset_signal, game_over, correct, letter2, ypos2); // Change as needed
+    Column_State_Machine u (reset_signal, game_over, correct, letter3, ypos3); // Change as needed
     
     Binary_BCD u (binary, ones, tens, hundreds); // Change as needed
     Binary_BCD u (binary, ones, tens, hundreds); // Change as needed
