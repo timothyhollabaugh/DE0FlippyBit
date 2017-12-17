@@ -21,6 +21,9 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
     reg [25:0] time_delay;
     reg [7:0]  randomletter;
 
+    reg reset_time_delay;
+    reg inc_time_delay;
+
     // Calculate nest state
     always @ (present_state or reset_signal or user_input or ypos or time_delay or letter) begin
         case (present_state)
@@ -79,7 +82,9 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
     always @ (posedge clock) begin
         present_state <= next_state;
         randomletter <= randomletter + 8'd1;
-        if (present_state == DelayState) begin
+        if (reset_time_delay) begin
+            time_delay <= 26'd0;
+        end else if (inc_time_delay) begin
             time_delay <= time_delay + 26'd1;
         end
     end
@@ -88,42 +93,63 @@ module Column_State_Machine(clock, user_input, reset_signal, ypos, game_over, co
     always @ (present_state) begin
         case (present_state)
             StartState      : begin
-                ypos      <= 5'd20;
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b0;
+
+                ypos      <= ypos;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;
             end
             ResetState      : begin
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b0;
+
                 ypos      <= 5'd0;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= randomletter;
             end
             DelayState      :  begin
+                inc_time_delay = 1'b1;
+                reset_time_delay = 1'b0;
+
                 ypos      <= ypos;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;
             end
             CorrectState    : begin
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b1;
+
                 ypos      <= ypos;
                 game_over <= 1'b0;
                 correct   <= 1'b1;
                 letter    <= letter;
             end
             MovingDownState : begin
-                ypos      <= ypos;
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b1;
+
+                ypos      <= ypos + 5'd1;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
                 letter    <= letter;
             end
             BoardBottomState: begin
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b0;
+
                 ypos      <= ypos;
                 game_over <= 1'b1;
                 correct   <= 1'b0;
                 letter    <= letter;
             end
             default: begin
+                inc_time_delay = 1'b0;
+                reset_time_delay = 1'b0;
+
                 ypos      <= 5'd0;
                 game_over <= 1'b0;
                 correct   <= 1'b0;
