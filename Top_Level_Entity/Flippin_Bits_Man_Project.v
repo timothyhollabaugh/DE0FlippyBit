@@ -38,7 +38,6 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3);
     assign HEX1 = ~seven_seg_hex1;
     assign HEX2 = ~ones_hex2;
     assign HEX3 = ~tens_hex3;
-    assign HEX2_DP = 1'b0;
 
     Seven_Seg hex0  (SW [3:0], seven_seg_hex0);
     Seven_Seg hex1  (SW [7:4], seven_seg_hex1); 
