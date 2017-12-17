@@ -14,6 +14,10 @@ module Column(clock, user_input, reset_signal, ypos, game_over, correct, letter)
     wire reset;
     assign reset = correct | reset_signal;
 
+    wire reset;
+
+    assign reset = reset_signal | correct;
+
     reg [25:0] fall_clock;
     reg [7:0] random_letter;
 
