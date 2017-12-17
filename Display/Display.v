@@ -31,6 +31,9 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
     assign displayed_value3[14:0] = letter3_right;
 
     always @(*) begin 
+        
+        assign framebuffer[1199:0] = 1200'd0;
+        
         if(ypos1 >= 5'd22) begin //letter 1
             framebuffer[93:86] <= 8'd0;
             framebuffer[133:126] <= 8'd0;
@@ -248,7 +251,10 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             framebuffer[273+ypos3*40] <= displayed_value3[2];
             framebuffer[272+ypos3*40] <= displayed_value3[1];
             framebuffer[271+ypos3*40] <= displayed_value3[0];
+            
         end
+        
     end
+    
 endmodule
 
