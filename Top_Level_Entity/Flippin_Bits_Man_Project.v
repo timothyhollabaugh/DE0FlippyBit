@@ -4,6 +4,8 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VG
     input [7:0] SW;
     input [2:0] BUTTON;
     output [6:0] HEX0, HEX1, HEX2, HEX3;
+    output [3:0] VGA_R, VGA_G;
+    output VGA_HS, VGA_VS;
 
     wire [2:0]    game_over, correct;
     wire [1199:0] framebuffer;
