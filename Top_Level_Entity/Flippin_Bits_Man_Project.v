@@ -45,6 +45,26 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .letter(letter1)
     );
 
+    Column column2 (
+        .clock(CLOCK_50),
+        .user_input(SW[7:0]),
+        .reset_signal(reset_signal),
+        .ypos(ypos2),
+        .game_over(game_over[1]),
+        .correct(correct[1]),
+        .letter(letter2)
+    );
+
+    Column column3 (
+        .clock(CLOCK_50),
+        .user_input(SW[7:0]),
+        .reset_signal(reset_signal),
+        .ypos(ypos3),
+        .game_over(game_over[2]),
+        .correct(correct[2]),
+        .letter(letter3)
+    );
+
     Display display (
         .clock(CLOCK_50),
         .letter1(letter1),

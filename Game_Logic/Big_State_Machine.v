@@ -38,9 +38,9 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
 		endcase
 	end
     
-    always @(score_increase | score_reset) begin
+    always @(score_increase or score_reset) begin
         if(score_increase & ~score_reset) score <= score + 8'b00000001;
-        else score <= 8'b00000000;
+        else if (score_reset) score <= 8'b00000000;
     end
     
 endmodule 

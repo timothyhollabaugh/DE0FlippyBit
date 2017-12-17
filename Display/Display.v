@@ -32,7 +32,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
 
     always @(*) begin 
         
-        assign framebuffer[1199:0] = 1200'd0;
+        framebuffer[1199:0] = 1200'd0;
         
         if(ypos1 >= 5'd22) begin //letter 1
             framebuffer[93:86] = 8'd0;
