@@ -31,7 +31,7 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3);
     
     Big_State_Machine u (reset_button, game_over, correct, reset_signal, score, clock_some_hertz);
     
-    Column inst (clock, user_input, reset_signal, ypos, game_over, correct, letter); // change as needed
+    Column inst (CLOCK_50, user_input, reset_signal, ypos, game_over, correct, letter); // change as needed
     
     assign LEDG = {tens, ones};
     assign HEX0 = ~seven_seg_hex0;
