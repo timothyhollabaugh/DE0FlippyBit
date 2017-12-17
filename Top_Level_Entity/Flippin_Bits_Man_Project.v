@@ -23,7 +23,6 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire reset_signal;
 
     assign HEX2_DP = 1'b0;
-<<<<<<< HEAD
     
     CLOCK_50_delayed clock_but_slower (
         .clock_50(CLOCK_50),
@@ -33,8 +32,6 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .clock_delay_30(clock_delay_30), 
         .clock_delay_60(clock_delay_60)
     );
-=======
->>>>>>> a8508e53965395aaa41e7b0c45a894557a9b7ccf
 
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
