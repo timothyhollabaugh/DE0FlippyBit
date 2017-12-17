@@ -99,7 +99,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[213+ypos1*40] = displayed_value1[5];
             framebuffer[212+ypos1*40] = displayed_value1[4];
-            framebuffer[211+ypos1*40] = displayed_value1[8];
+            framebuffer[211+ypos1*40] = displayed_value1[3];
             
             framebuffer[253+ypos1*40] = displayed_value1[2];
             framebuffer[252+ypos1*40] = displayed_value1[1];
@@ -172,7 +172,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[223+ypos2*40] = displayed_value2[5];
             framebuffer[222+ypos2*40] = displayed_value2[4];
-            framebuffer[221+ypos2*40] = displayed_value2[8];
+            framebuffer[221+ypos2*40] = displayed_value2[3];
             
             framebuffer[263+ypos2*40] = displayed_value2[2];
             framebuffer[262+ypos2*40] = displayed_value2[1];
@@ -246,7 +246,7 @@ module Display(clock, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffe
             
             framebuffer[233+ypos3*40] = displayed_value3[5];
             framebuffer[232+ypos3*40] = displayed_value3[4];
-            framebuffer[231+ypos3*40] = displayed_value3[8];
+            framebuffer[231+ypos3*40] = displayed_value3[3];
             
             framebuffer[273+ypos3*40] = displayed_value3[2];
             framebuffer[272+ypos3*40] = displayed_value3[1];
