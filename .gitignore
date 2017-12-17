@@ -12,3 +12,5 @@ output_files/
 *.qpf
 Top Level Entity/Flippin_Bits_Man_Project.v
 Top Level Entity/Flippin_Bits_Man_Project.v
+Column/Column.v
+Game_Logic/Big_State_Machine.v
