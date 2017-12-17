@@ -11,7 +11,7 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3);
     wire [7:0]    score, letter1, letter2, letter3;
     
     wire [6:0] seven_seg_hex0;
-	wire [6:0] seven_seg_hex1;
+    wire [6:0] seven_seg_hex1;
     wire [6:0] ones_hex2;
     wire [6:0] tens_hex3;
     wire [3:0] ones;
@@ -45,9 +45,9 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3);
     Seven_Seg hex3  (tens, tens_hex3);
     Binary_BCD one_hex2 (SW [7:0], ones, tens, hundreds);
     
-    Display u (clock_some_hertz, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
+    Display u (CLOCK_50, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
     
-    VGA u (clock_some_hertz, framebuffer, );
+    VGA u (CLOCK_50, framebuffer, );
     
 endmodule
     
