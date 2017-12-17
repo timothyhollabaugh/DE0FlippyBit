@@ -11,7 +11,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire [2:0]    game_over, correct;
     wire [1199:0] framebuffer;
     wire [4:0]    ypos1, ypos2, ypos3;
-    wire [7:0]    score, letter1, letter2, letter3;
+    wire [7:0]    score_wire, letter1, letter2, letter3;
 
     wire [6:0] seven_seg_hex0;
     wire [6:0] seven_seg_hex1;
@@ -31,7 +31,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .game_over(game_over),
         .correct(correct),
         .reset_signal(reset_signal),
-        .score(score),
+        .score(score_wire),
         .clock(CLOCK_50)
     );
 
@@ -95,7 +95,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     Seven_Seg hex1  (SW [7:4], seven_seg_hex1); 
     Seven_Seg hex2  (ones, ones_hex2);
     Seven_Seg hex3  (tens, tens_hex3);
-    Binary_BCD one_hex2 (score, ones, tens, hundreds);
+    Binary_BCD one_hex2 (score_wire, ones, tens, hundreds);
 
 
 endmodule
