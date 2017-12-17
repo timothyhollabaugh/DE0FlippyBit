@@ -1,8 +1,9 @@
 
-module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VGA_G, VGA_HS, VGA_VS); 
+module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VGA_G, VGA_HS, VGA_VS); 
     input CLOCK_50;
     input [7:0] SW;
     input [2:0] BUTTON;
+    output [9:0] LEDG;
     output [6:0] HEX0, HEX1, HEX2, HEX3;
     output [3:0] VGA_R, VGA_G;
     output VGA_HS, VGA_VS;
@@ -36,11 +37,11 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VG
 
     Column column1 (
         .clock(CLOCK_50),
-        .user_input(SW[7:0],
+        .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos1),
-        .game_over(game_over[0],
-        .correct(correct[0],
+        .game_over(game_over[0]),
+        .correct(correct[0]),
         .letter(letter1)
     );
 
