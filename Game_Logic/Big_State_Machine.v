@@ -17,9 +17,11 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
 			default: next_state <= start;
 			start: next_state <= running;
 			running: begin
-				if ((game_over[0] | game_over[1] | game_over[2]) & ~correct[0] & ~correct[1] & ~correct[2]) next_state <= start;
-                if (~game_over[0] & ~game_over[1] & ~game_over[2] & (correct[0] | correct[1] | correct[2])) next_state <= point;
-				else next_state <= running;
+                if (game_over[0] | game_over[1] | game_over[2]) begin
+                    next_state <= start;
+                end else begin
+                    next_state <= running;
+                end
 			end
             point: next_state <= running;
 		endcase
