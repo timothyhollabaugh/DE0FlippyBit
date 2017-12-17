@@ -1,4 +1,3 @@
-
 module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VGA_G, VGA_HS, VGA_VS); 
     input CLOCK_50;
     input [7:0] SW;
@@ -24,7 +23,15 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire reset_signal;
 
     assign HEX2_DP = 1'b0;
-    assign reset_button = BUTTON[2];
+    
+    CLOCK_50_delayed clock_but_slower (
+        .clock_50(CLOCK_50),
+        .reset_button(~BUTTON[2]), 
+        .game_over2(game_over[1]), 
+        .game_over3(game_over[2]),
+        .clock_delay_30(clock_delay_30), 
+        .clock_delay_60(clock_delay_60)
+    );
 
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
@@ -46,7 +53,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     );
 
     Column column2 (
-        .clock(CLOCK_50),
+        .clock(clock_delay_30),
         .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos2),
@@ -56,7 +63,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     );
 
     Column column3 (
-        .clock(CLOCK_50),
+        .clock(clock_delay_60),
         .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos3),
