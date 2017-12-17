@@ -43,7 +43,7 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3);
     Seven_Seg hex1  (SW [7:4], seven_seg_hex1); 
     Seven_Seg hex2  (ones, ones_hex2);
     Seven_Seg hex3  (tens, tens_hex3);
-    Binary_BCD one_hex2 (SW [7:0], ones, tens, hundreds);
+    Binary_BCD one_hex2 (score, ones, tens, hundreds);
     
     Display u (clock_some_hertz, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
     
