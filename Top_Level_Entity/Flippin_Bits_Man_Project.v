@@ -52,7 +52,7 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VG
         .ypos1(ypos1),
         .ypos2(ypos2),
         .ypos3(ypos3),
-        .framebuffer(framebuffer);
+        .framebuffer(framebuffer)
     );
 
     VGA vga (
@@ -61,7 +61,7 @@ module Flippy_Bit (CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VG
         .red_out(VGA_R),
         .green_out(VGA_G),
         .h_sync_out(VGA_HS),
-        .v_sync_out(VGA_VS),
+        .v_sync_out(VGA_VS)
     );
 
     assign LEDG = {tens, ones};
