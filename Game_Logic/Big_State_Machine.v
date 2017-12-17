@@ -1,48 +1,35 @@
 module Big_State_Machine (reset_button, game_over, correct, reset_signal, score, clock, state);
-    input [2:0]game_over, correct;
     input reset_button;
+    input [2:0] game_over;
+    input [2:0] correct;
     input clock;
-    output reg reset_signal;
-    output reg [7:0]score;
 
-    parameter start = 2'b00, running = 2'b01, point = 2'b10;// new_best_time = 3'b100, display_best_time = 3'b101;
-	
-    reg score_reset, score_increase;
-    
-    output reg [2:0] state;
-    reg [2:0] next_state;
-    
-    always @(*) begin
-		case(state) 
-			default: next_state <= start;
-			start: next_state <= running;
-			running: begin
-                if (game_over[0] | game_over[1] | game_over[2]) begin
-                    next_state <= start;
-                end else begin
-                    next_state <= running;
-                end
-			end
-            point: next_state <= running;
-		endcase
-	end 
-    
-    always @(posedge clock or posedge reset_button) begin
-		if(reset_button) state <= start;
-		else state <= next_state;
-	end
-    
-    always @(state) begin
-		case(state)
-			start: {reset_signal, score_reset, score_increase} = 3'b110;
-            running: {reset_signal, score_reset, score_increase} = 3'b000;
-            point: {reset_signal, score_reset, score_increase} = 3'b001;
-		endcase
-	end
-    
-    always @(score_increase or score_reset) begin
-        if(score_increase & ~score_reset) score <= score + 8'b00000001;
-        else if (score_reset) score <= 8'b00000000;
-    end
-    
+    output reset_signal;
+    output [7:0] score;
+    output reg [1:0] state;
+
+    assign reset_signal = game_over[0];
+
+    /*
+    parameter RESET = 2'b00
+    parameter RUNNING = 2'b01;
+    parameter CORRECT = 2'b10;
+
+    output reg [1:0] state;
+    reg [1:0] next_state;
+
+    always @ (state or reset_signal or game_over or correct or reset_signal) begin
+        case (state)
+            RESET: begin
+                next_state <= RUNNING;
+            end
+
+            running: begin
+                next_state <= RUNNING;
+            end
+            */
+
+
+
+
 endmodule 
