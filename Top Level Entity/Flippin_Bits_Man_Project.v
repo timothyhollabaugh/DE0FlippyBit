@@ -24,10 +24,7 @@ module Flippy_Bit (CLOCK_50, SW, BUTTON, HEX0, HEX1, HEX2, HEX3, HEX2_DP);
     assign HEX2_DP = 0;
     assign reset_button = BUTTON[2];
     
-    
-    ClockDivider_Flippy_Bit u1 (CLOCK_50, clock_some_hertz);
-    
-    Big_State_Machine u (reset_button, game_over, correct, reset_signal, score, clock_some_hertz);
+    Big_State_Machine u (reset_button, game_over, correct, reset_signal, score, CLOCK_50);
     
     Column_State_Machine u (reset_signal, game_over, correct, letter1, ypos1); // Change as needed
     Column_State_Machine u (reset_signal, game_over, correct, letter2, ypos2); // Change as needed
@@ -42,9 +39,9 @@ module Flippy_Bit (CLOCK_50, SW, BUTTON, HEX0, HEX1, HEX2, HEX3, HEX2_DP);
     Seven_Seg u (in, HEX2); //Change "in" as needed
     Seven_Seg u (in, HEX3); //Change "in" as needed
     
-    Display u (clock_some_hertz, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
+    Display u (CLOCK_50, letter1, letter2, letter3, ypos1, ypos2, ypos3, framebuffer);
     
-    VGA u (clock_some_hertz, framebuffer, );
+    VGA u (CLOCK_50, framebuffer, );
     
 endmodule
     
