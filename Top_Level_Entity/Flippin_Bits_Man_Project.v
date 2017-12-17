@@ -35,9 +35,9 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .state(LEDG[1:0])
     );
 
-    assign LEDG[3:1] = game_over;
-    assign LEDG[6:4] = correct;
-    assign LEDG[7] = reset_signal;
+    assign LEDG[4:2] = game_over;
+    assign LEDG[7:5] = correct;
+    assign LEDG[8] = reset_signal;
 
     Column column1 (
         .clock(CLOCK_50),
