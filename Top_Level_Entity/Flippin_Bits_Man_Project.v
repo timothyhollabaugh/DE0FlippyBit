@@ -24,7 +24,6 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire reset_signal;
 
     assign HEX2_DP = 1'b0;
-    assign reset_button = BUTTON[2];
 
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
@@ -32,8 +31,13 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .correct(correct),
         .reset_signal(reset_signal),
         .score(score),
-        .clock(CLOCK_50)
+        .clock(CLOCK_50),
+        .state(LEDG[1:0])
     );
+
+    assign LEDG[3:1] = game_over;
+    assign LEDG[6:4] = correct;
+    assign LEDG[7] = reset_signal;
 
     Column column1 (
         .clock(CLOCK_50),
@@ -85,7 +89,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .v_sync_out(VGA_VS)
     );
 
-    assign LEDG = SW[7:0];
+    //assign LEDG = SW[7:0];
     assign HEX0 = ~seven_seg_hex0;
     assign HEX1 = ~seven_seg_hex1;
     assign HEX2 = ~ones_hex2;

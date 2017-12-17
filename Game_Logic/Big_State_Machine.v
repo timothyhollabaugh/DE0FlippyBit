@@ -1,4 +1,4 @@
-module Big_State_Machine (reset_button, game_over, correct, reset_signal, score, clock);
+module Big_State_Machine (reset_button, game_over, correct, reset_signal, score, clock, state);
     input [2:0]game_over, correct;
     input reset_button;
     input clock;
@@ -9,7 +9,7 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
 	
     reg score_reset, score_increase;
     
-    reg [2:0] state;
+    output reg [2:0] state;
     reg [2:0] next_state;
     
     always @(*) begin
