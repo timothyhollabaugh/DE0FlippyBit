@@ -14,7 +14,7 @@ module Column(clock, user_input, reset_signal, ypos, game_over, correct, letter)
     initial begin
         fall_clock <= 26'd0;
         ypos <= 5'd0;
-        random_letter <= 8'b0;
+        random_letter <= 8'd27;
     end
 
     always @ (posedge clock) begin

@@ -18,16 +18,16 @@ module Reset_Flow(clock, reset_in, reset_out);
                 count = count + 32'd1;
             end
 
-            if (count >= 32'd50000000) begin
-                reset_out[2] = reset_in[2];
-            end
-
-            if (count >= 32'd250000000) begin
+            if (count >= 32'd5000000) begin
                 reset_out[1] = reset_in[1];
             end
 
-            if (count >= 32'd500000000) begin
+            if (count >= 32'd251231231) begin
                 reset_out[0] = reset_in[0];
+            end
+
+            if (count >= 32'd498798797) begin
+                reset_out[2] = reset_in[2];
             end
         end
     end
