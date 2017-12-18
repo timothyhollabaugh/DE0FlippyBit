@@ -83,16 +83,15 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .h_sync_out(VGA_HS),
         .v_sync_out(VGA_VS)
     );
-	 
-	 Reset_Flow reset_flow(
+
+     Reset_Flow reset_flow(
         .clock(CLOCK_50),
         .reset_in(reset_signal),
         .reset_out(reset_signal_delay)
     );
 
-    assign LEDG[7:0] = score_wire;
+    assign LEDG[2:0] = reset_signal_delay;
 
-    //assign LEDG = SW[7:0];
     assign HEX0 = ~seven_seg_hex0;
     assign HEX1 = ~seven_seg_hex1;
     assign HEX2 = ~ones_hex2;
