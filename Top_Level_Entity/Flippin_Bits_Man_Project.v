@@ -21,22 +21,15 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire [3:0] hundreds;
 
     wire [2:0] reset_signal;
+    wire reset_signal_delay1;
+    wire reset_signal_delay2;
 
     assign HEX2_DP = 1'b0;
-
-    CLOCK_50_delayed clock_but_slower (
-        .clock_50(CLOCK_50),
-        .reset_button(~BUTTON[2]), 
-        .game_over2(game_over2), 
-        .game_over3(game_over3),
-        .clock_delay_30(clock_delay_30), 
-        .clock_delay_60(clock_delay_60)
-    );
 
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
         .game_over(game_over),
-        .correct(correct[2:0]),
+        .correct(correct),
         .reset_signal(reset_signal),
         .score(score_wire),
         .clock(CLOCK_50),
@@ -55,7 +48,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     Column column2 (
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
-        .reset_signal(reset_signal[1]),
+        .reset_signal(reset_signal_delay1),
         .ypos(ypos2),
         .game_over(game_over2),
         .correct(correct2),
@@ -90,6 +83,12 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .green_out(VGA_G),
         .h_sync_out(VGA_HS),
         .v_sync_out(VGA_VS)
+    );
+	 
+	 Reset_Flow reset_flow(
+        .clock(CLOCK_50),
+        .reset_in(reset_signal[1]),
+        .reset_out(reset_signal_delay1)
     );
 
     assign LEDG[7:0] = score_wire;
