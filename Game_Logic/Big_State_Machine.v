@@ -13,6 +13,9 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
 	
     output reg [2:0] state;
     reg [2:0] next_state;
+
+    reg inc_score;
+    reg reset_score;
     
     always @(*) begin
 		case(state) 
@@ -38,38 +41,54 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
 	end 
     
     always @(posedge clock or posedge reset_button) begin
-		if(reset_button) state <= start;
-		else state <= next_state;
+        if(reset_button) begin
+            state <= start;
+        end else begin
+            if (inc_score) begin
+                score <= score + 8'b1;
+            end else if (reset_score) begin
+                score <= 8'd0;
+            end
+            state <= next_state;
+        end
 	end
-    
-    always @(state) begin
+
+    always @(state or reset_signal or score) begin
 		case(state)
             start: begin
                 reset_signal <= 3'b111;
-                score <= 8'd0;
+                inc_score <= 1'b0;
+                reset_score <= 1'b1;
             end
 
             running: begin
                 reset_signal <= 3'b000;
+                inc_score <= 1'b0;
+                reset_score <= 1'b0;
             end
 
             point1: begin
-                score <= score + 8'd1;
                 reset_signal[0] <= 1'b1;
+                inc_score <= 1'b1;
+                reset_score <= 1'b0;
             end
 
             point2: begin
-                score <= score + 8'd1;
                 reset_signal[1] <= 1'b1;
+                inc_score <= 1'b1;
+                reset_score <= 1'b0;
             end
 
             point3: begin
-                score <= score + 8'd1;
                 reset_signal[2] <= 1'b1;
+                inc_score <= 1'b1;
+                reset_score <= 1'b0;
             end
 
             default: begin
                 reset_signal <= 3'b000;
+                inc_score <= 1'b0;
+                reset_score <= 1'b0;
             end
 		endcase
 	end

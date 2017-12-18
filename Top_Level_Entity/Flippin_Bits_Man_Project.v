@@ -39,7 +39,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .correct(correct),
         .reset_signal(reset_signal),
         .score(score_wire),
-        .clock(CLOCK_50),
+        .clock(CLOCK_50)
     );
 
     Column column1 (

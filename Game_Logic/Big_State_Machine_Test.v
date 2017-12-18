@@ -23,6 +23,8 @@ module Big_State_Machine_Test ();
 
     always begin
         #100
+        reset_button <= 1'b0;
+        #100
         game_over <= 3'b001;
         #100
         game_over <= 3'b000;
@@ -50,7 +52,7 @@ module Big_State_Machine_Test ();
     end
 
     initial begin
-        #2000
+        #20000
         $stop;
     end
 endmodule
