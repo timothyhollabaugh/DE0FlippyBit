@@ -20,7 +20,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     wire [3:0] tens;
     wire [3:0] hundreds;
 
-    wire reset_signal;
+    wire [2:0] reset_signal;
 
     assign HEX2_DP = 1'b0;
 
@@ -40,17 +40,12 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .reset_signal(reset_signal),
         .score(score_wire),
         .clock(CLOCK_50),
-        .state(LEDG[1:0])
     );
-
-    assign LEDG[4:2] = game_over;
-    assign LEDG[7:5] = correct;
-    assign LEDG[8] = reset_signal;
 
     Column column1 (
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
-        .reset_signal(reset_signal),
+        .reset_signal(reset_signal[0]),
         .ypos(ypos1),
         .game_over(game_over[0]),
         .correct(correct[0]),
@@ -60,7 +55,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     Column column2 (
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
-        .reset_signal(reset_signal),
+        .reset_signal(reset_signal[1]),
         .ypos(ypos2),
         .game_over(game_over[1]),
         .correct(correct[1]),
@@ -70,7 +65,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     Column column3 (
         .clock(CLOCK_50),
         .user_input(SW[7:0]),
-        .reset_signal(reset_signal),
+        .reset_signal(reset_signal[2]),
         .ypos(ypos3),
         .game_over(game_over[2]),
         .correct(correct[2]),
@@ -96,6 +91,8 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .h_sync_out(VGA_HS),
         .v_sync_out(VGA_VS)
     );
+
+    assign LEDG[7:0] = score_wire;
 
     //assign LEDG = SW[7:0];
     assign HEX0 = ~seven_seg_hex0;

@@ -11,13 +11,6 @@ module Column(clock, user_input, reset_signal, ypos, game_over, correct, letter)
     assign correct = user_input == letter ? 1'b1 : 1'b0;
     assign game_over = ypos == 5'd22 ? 1'b1 : 1'b0;
 
-    wire reset;
-    assign reset = correct | reset_signal;
-
-    wire reset;
-
-    assign reset = reset_signal | correct;
-
     reg [25:0] fall_clock;
     reg [7:0] random_letter;
 
@@ -26,14 +19,15 @@ module Column(clock, user_input, reset_signal, ypos, game_over, correct, letter)
         ypos <= 5'd0;
     end
 
-    always @ (posedge clock or posedge reset) begin
+    always @ (posedge clock) begin
+        random_letter <= random_letter + 8'd1;
+    end
 
-        random_letter = random_letter + 8'd1;
-
-        if (reset) begin
+    always @ (posedge clock or posedge reset_signal) begin
+        if (reset_signal) begin
+            letter = random_letter;
             ypos = 5'd23;
             fall_clock = 26'd0;
-            letter = random_letter;
         end else begin
 
             if (ypos == 5'd23) begin
