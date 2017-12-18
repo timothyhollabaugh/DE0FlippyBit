@@ -1,39 +1,29 @@
-module Big_State_Machine (reset_button, game_over, correct, reset_signal, score, clock, state);
-    input [2:0]game_over, correct;
+module Big_State_Machine (reset_button, game_over1, game_over2, game_over3, correct1, correct2, correct3, reset_signal, score, clock, state);
+    input game_over1, game_over2, game_over3, correct1, correct2, correct3;
     input reset_button;
     input clock;
-    output reg [2:0] reset_signal;
+    output reg reset_signal;
     output reg [7:0]score;
 
-    parameter start = 3'd0;
-    parameter running = 3'd1;
-    parameter point1 = 3'd2;
-    parameter point2 = 3'd3;
-    parameter point3 = 3'd4;
+    parameter start = 2'b00, running = 2'b01, point = 2'b10;// new_best_time = 3'b100, display_best_time = 3'b101;
 	
+    reg score_reset, score_increase;
+    
     output reg [2:0] state;
     reg [2:0] next_state;
     
     always @(*) begin
 		case(state) 
 			default: next_state <= start;
-			start: next_state <= running;
+			start: next_state <= reset_button ? start : running;
 			running: begin
-                if (game_over[0] | game_over[1] | game_over[2]) begin
+                if (game_over1 | game_over2 | game_over3) begin
                     next_state <= start;
-                end else if (correct[0]) begin
-                    next_state <= point1;
-                end else if (correct[1]) begin
-                    next_state <= point2;
-                end else if (correct[2]) begin
-                    next_state <= point3;
                 end else begin
                     next_state <= running;
                 end
 			end
-            point1: next_state <= running;
-            point2: next_state <= running;
-            point3: next_state <= running;
+            point: next_state <= running;
 		endcase
 	end 
     
@@ -44,34 +34,15 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
     
     always @(state) begin
 		case(state)
-            start: begin
-                reset_signal <= 3'b111;
-                score <= 8'd0;
-            end
-
-            running: begin
-                reset_signal <= 3'b000;
-            end
-
-            point1: begin
-                score <= score + 8'd1;
-                reset_signal[0] <= 1'b1;
-            end
-
-            point2: begin
-                score <= score + 8'd1;
-                reset_signal[1] <= 1'b1;
-            end
-
-            point3: begin
-                score <= score + 8'd1;
-                reset_signal[2] <= 1'b1;
-            end
-
-            default: begin
-                reset_signal <= 3'b000;
-            end
+			start: {reset_signal, score_reset, score_increase} = 3'b110;
+            running: {reset_signal, score_reset, score_increase} = 3'b000;
+            point: {reset_signal, score_reset, score_increase} = 3'b001;
 		endcase
 	end
+    
+    always @(score_increase or score_reset) begin
+        if(score_increase & ~score_reset) score <= score + 8'b00000001;
+        else if (score_reset) score <= 8'b00000000;
+    end
     
 endmodule 
