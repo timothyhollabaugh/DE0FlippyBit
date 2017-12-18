@@ -27,16 +27,20 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     CLOCK_50_delayed clock_but_slower (
         .clock_50(CLOCK_50),
         .reset_button(~BUTTON[2]), 
-        .game_over2(game_over[1]), 
-        .game_over3(game_over[2]),
+        .game_over2(game_over2), 
+        .game_over3(game_over3),
         .clock_delay_30(clock_delay_30), 
         .clock_delay_60(clock_delay_60)
     );
 
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
-        .game_over(game_over),
-        .correct(correct),
+        .game_over1(game_over1),
+        .game_over2(game_over2), 
+        .game_over3(game_over3),
+        .correct1(correct1),
+        .correct2(correct2),
+        .correct3(correct3),
         .reset_signal(reset_signal),
         .score(score_wire),
         .clock(CLOCK_50),
@@ -52,8 +56,8 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos1),
-        .game_over(game_over[0]),
-        .correct(correct[0]),
+        .game_over(game_over1),
+        .correct(correct1),
         .letter(letter1)
     );
 
@@ -62,8 +66,8 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos2),
-        .game_over(game_over[1]),
-        .correct(correct[1]),
+        .game_over(game_over2),
+        .correct(correct2),
         .letter(letter2)
     );
 
@@ -72,8 +76,8 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .user_input(SW[7:0]),
         .reset_signal(reset_signal),
         .ypos(ypos3),
-        .game_over(game_over[2]),
-        .correct(correct[2]),
+        .game_over(game_over3),
+        .correct(correct3),
         .letter(letter3)
     );
 
