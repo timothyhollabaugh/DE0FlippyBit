@@ -36,7 +36,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
     Big_State_Machine big_state_machine (
         .reset_button(~BUTTON[2]),
         .game_over(game_over),
-        .correct(correct),
+        .correct(correct[2:0]),
         .reset_signal(reset_signal),
         .score(score_wire),
         .clock(CLOCK_50),
