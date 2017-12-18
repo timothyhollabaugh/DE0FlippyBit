@@ -1,5 +1,5 @@
-module Big_State_Machine (reset_button, game_over, correct, reset_signal, score, clock, state);
-    input [2:0]game_over, correct;
+module Big_State_Machine (reset_button, game_over1, game_over2, game_over3, correct1, correct2, correct3, reset_signal, score, clock, state);
+    input game_over1, game_over2, game_over3, correct1, correct2, correct3;
     input reset_button;
     input clock;
     output reg reset_signal;
@@ -15,9 +15,9 @@ module Big_State_Machine (reset_button, game_over, correct, reset_signal, score,
     always @(*) begin
 		case(state) 
 			default: next_state <= start;
-			start: next_state <= running;
+			start: next_state <= reset_button ? start : running;
 			running: begin
-                if (game_over[0] | game_over[1] | game_over[2]) begin
+                if (game_over1 | game_over2 | game_over3) begin
                     next_state <= start;
                 end else begin
                     next_state <= running;
