@@ -1,9 +1,10 @@
-module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, VGA_R, VGA_G, VGA_HS, VGA_VS); 
+module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HEX3, HEX2_DP, VGA_R, VGA_G, VGA_HS, VGA_VS); 
     input CLOCK_50;
     input [7:0] SW;
     input [2:0] BUTTON;
     output [9:0] LEDG;
     output [6:0] HEX0, HEX1, HEX2, HEX3;
+    output HEX2_DP;
     output [3:0] VGA_R, VGA_G;
     output VGA_HS, VGA_VS;
 
@@ -90,7 +91,7 @@ module Flippin_Bits_Man_Project(CLOCK_50, SW, LEDG, BUTTON, HEX0, HEX1, HEX2, HE
         .reset_out(reset_signal_delay)
     );
 
-    assign LEDG[2:0] = reset_signal_delay;
+    //assign LEDG[2:0] = reset_signal_delay;
 
     assign HEX0 = ~seven_seg_hex0;
     assign HEX1 = ~seven_seg_hex1;
